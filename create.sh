@@ -77,7 +77,7 @@ check_exist() {
 banner() {
   clear
   sep
-  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v2.\x1b[1;31m7"
+  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v2.\x1b[1;31m8"
   echo -e "\x1b[1;32mCoder: _R\x1b[1;36meduce"
   echo -e "\x1b[1;32mDevice: R\x1b[1;36medmi 4A\x1b[1;31m(rolex)"
   echo -e "\x1b[1;32mDo with y\x1b[1;36mour own \x1b[1;31mrisk"
