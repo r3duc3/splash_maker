@@ -22,7 +22,9 @@ main() {
 
   debug 'g' "creating splash... "
   # splash.img: bootlocked_logo fastboot_logo bootunlocked_logo
-  cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > output/splash.img
+  cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > splash.img
+  zip -uq extra/updater.zip splash.img -O output/splash_recovery.zip
+  mv splash.img output/splash_image.img
   echo 'OK'
   debug 'g' "remove temp file... "
   rm logo.raw fastboot.raw
