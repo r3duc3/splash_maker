@@ -1,8 +1,18 @@
 #!/usr/bin/bash
 
+###################
+# extension image
+# default .png
 ext=$([ $1 ] && echo $1 || echo "png")
-splash=(logo.$ext fastboot.$ext)
+###################
 
+###################
+# splash image
+# only 2 image
+splash=(logo.$ext fastboot.$ext)
+###################
+
+# main function to create splash.img
 main() {
   for x in "${splash[@]}"; do
     debug 'g' "convert $x to ${x%.*}.raw ... "
@@ -11,6 +21,7 @@ main() {
   done
 
   debug 'g' "creating splash... "
+  # splash.img: bootlocked_logo fastboot_logo bootunlocked_logo
   cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > output/splash.img
   echo 'OK'
   debug 'g' "remove temp file... "
@@ -18,6 +29,7 @@ main() {
   echo 'OK'
 }
 
+# idk
 sep() {
   for x in $(seq 1 33); do
     echo -en "\x1b[1;0m="
@@ -26,6 +38,7 @@ sep() {
   echo
 }
 
+# its just `echo` with extra steps
 debug() {
   d='\x1b[1;0m'
   if [ $1 == 'r' ]; then
@@ -38,14 +51,16 @@ debug() {
 }
 
 check_exist() {
+  # check if bootlogo & fastboot is exist
   for x in "${splash[@]}"; do
     image_exist=$([ -f images/$x ] && echo true || echo false)
   done
 
   if ! $image_exist; then
-    debug 'r' "some image doesn't exists\n"
+    debug 'r' "some image(s) doesn't exist\n"
   fi
 
+  # check if ffmpeg is installed
   if ! command -v ffmpeg &> /dev/null; then
     ffmpeg_exist=false
     debug 'r' "ffmpeg not installed\n"
@@ -53,6 +68,7 @@ check_exist() {
     ffmpeg_exist=true
   fi
 
+  # exit program if image(s) not exist or ffmpeg not installed
   if ! $image_exist || ! $ffmpeg_exist; then
     exit
   fi
@@ -69,6 +85,5 @@ banner() {
 }
 
 banner
-exit
 check_exist
 main
