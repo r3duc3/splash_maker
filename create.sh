@@ -48,7 +48,7 @@ check_exist() {
 
   if ! command -v ffmpeg &> /dev/null; then
     ffmpeg_exist=false
-    debug 'r' "ffmpeg not installed"
+    debug 'r' "ffmpeg not installed\n"
   else
     ffmpeg_exist=true
   fi
@@ -61,13 +61,14 @@ check_exist() {
 banner() {
   clear
   sep
-  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v1.3"
-  echo -e "\x1b[1;32mDevice: \x1b[1;36mRedmi 4A\x1b[1;31m(rolex)"
-  echo -e "\x1b[1;32mCoder: \x1b[1;36m_Reduce"
-  echo -e "\x1b[1;32mffmpeg: \x1b[1;36m$(command -v ffmpeg || echo 'Not Installed')"
+  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v2.\x1b[1;31m7"
+  echo -e "\x1b[1;32mCoder: _R\x1b[1;36meduce"
+  echo -e "\x1b[1;32mDevice: R\x1b[1;36medmi 4A\x1b[1;31m(rolex)"
+  echo -e "\x1b[1;32mDo with y\x1b[1;36mour own \x1b[1;31mrisk"
   sep
 }
 
 banner
+exit
 check_exist
 main
