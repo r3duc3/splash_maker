@@ -29,8 +29,6 @@ I recommend to backup your stock image:
 
 example: `dd if=/dev/block/bootdevice/by-name/splash of=/sdcard/splash.bak`
 
-Or you can flash with twrp
-
 ### Tested device
 - Redmi 4a ( rolex )
 

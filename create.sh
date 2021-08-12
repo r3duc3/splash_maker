@@ -22,9 +22,7 @@ main() {
 
   debug 'g' "creating splash... "
   # splash.img: bootlocked_logo fastboot_logo bootunlocked_logo
-  cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > splash.img
-  zip -uq extra/updater.zip splash.img -O output/splash_recovery.zip
-  mv splash.img output/splash_image.img
+  cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > output/splash.img
   echo 'OK'
   debug 'g' "remove temp file... "
   rm logo.raw fastboot.raw
@@ -79,7 +77,7 @@ check_exist() {
 banner() {
   clear
   sep
-  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v3.\x1b[1;31m2"
+  echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v2.\x1b[1;31m8"
   echo -e "\x1b[1;32mCoder: _R\x1b[1;36meduce"
   echo -e "\x1b[1;32mMade\x1b[1;36m with Hand b\x1b[1;31my _Reduce"
   sep
