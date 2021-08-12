@@ -19,15 +19,15 @@ the output is in _output/_ folder
 
 then change splash screen with `dd`:
 
-`dd if=/path/of/splash.img of=/dev/block/by-name/splash`
+`dd if=/path/of/splash.img of=/dev/block/bootdevice/by-name/splash`
 
 for example:
 
-`dd if=/sdcard/splash.img of=/dev/block/by-name/splash`
+`dd if=/sdcard/splash.img of=/dev/block/bootdevice/by-name/splash`
 
 I recommend to backup your stock image:
 
-example: `dd if=/dev/block/by-name/splash of=/sdcard/splash.bak`
+example: `dd if=/dev/block/bootdevice/by-name/splash of=/sdcard/splash.bak`
 
 ### Tested device
 - Redmi 4a ( rolex )
