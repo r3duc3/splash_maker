@@ -79,7 +79,7 @@ banner() {
   sep
   echo -e "\x1b[1;32mSplash Ma\x1b[1;36mker v2.\x1b[1;31m8"
   echo -e "\x1b[1;32mCoder: _R\x1b[1;36meduce"
-  echo -e "\x1b[1;32mDo with y\x1b[1;36mour own \x1b[1;31mrisk"
+  echo -e "\x1b[1;32mMade\x1b[1;36m with Hand b\x1b[1;31my _Reduce"
   sep
 }
 
