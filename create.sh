@@ -16,6 +16,28 @@ sep() {
   echo
 }
 
+debug() {
+  d='\x1b[1;0m'
+  if [ $1 == 'r' ]; then
+    a='\x1b[1;31m'; b='\x1b[1;33m'; c='!'
+  elif [ $1 == 'g' ]; then
+    a='\x1b[1;32m'; b='\x1b[1;36m'; c='*'
+  fi
+
+  echo -en "$d[$a$c$d] $b$2$d"
+}
+
+check_splash() {
+  for x in "${splash[@]}"; do
+    exist=$([ -f images/$x ] && echo true || echo false)
+  done
+
+  if ! $exist; then
+    debug 'r' "some image doesn't exists\n"
+    exit
+  fi
+}
+
 banner() {
   clear
   sep
@@ -27,3 +49,4 @@ banner() {
 }
 
 banner
+check_splash
