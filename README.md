@@ -3,7 +3,7 @@ create splash screen
 
 ### Requirements
 - ffmpeg
-- 2 image for bootlogo and fastboot
+- 2 images for bootlogo and fastboot
 - your phone LOL
 
 ### How to Use
