@@ -6,6 +6,9 @@ create splash screen
 - 2 images for bootlogo and fastboot
 - your phone LOL
 
+## New Feature!
+now you can change splash screen via twrp
+
 ### How to Use
 copy your image to _images/_ folder,
 
