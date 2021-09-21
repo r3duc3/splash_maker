@@ -23,6 +23,11 @@ main() {
   debug 'g' "creating splash... "
   # splash.img: bootlocked_logo fastboot_logo bootunlocked_logo
   cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > output/splash.img
+  cp -rf extra/META-INF output
+  cd output
+  zip -rq splash_maker.zip META-INF splash.img
+  rm -rf META-INF
+  cd ..
   echo 'OK'
   debug 'g' "remove temp file... "
   rm logo.raw fastboot.raw
