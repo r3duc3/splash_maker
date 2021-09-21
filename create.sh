@@ -25,7 +25,7 @@ main() {
   cat extra/header.img logo.raw extra/header.img fastboot.raw extra/header.img logo.raw > output/splash.img
   cp -rf extra/META-INF output
   cd output
-  zip -rq splash_maker.zip META-INF splash.img
+  zip -rq splash_twrp.zip META-INF splash.img
   rm -rf META-INF
   cd ..
   echo 'OK'
