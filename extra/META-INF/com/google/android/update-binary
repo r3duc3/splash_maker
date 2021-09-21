@@ -1,0 +1,53 @@
+#!/sbin/sh
+
+OUTFD=/proc/self/fd/$2;
+ZIPFILE="$3";
+SPLASH=/dev/block/bootdevice/by-name/splash;
+BAK=/sdcard/splash-backup.img;
+[ -d /postinstall/tmp ] && POSTINSTALL=/postinstall;
+[ "$MYHOME" ] || MYHOME=$POSTINSTALL/tmp/splash_maker;
+
+ui_print() {
+  until [ ! "$1" ]; do
+    echo "ui_print $1
+      ui_print" >> $OUTFD;
+    shift;
+  done;
+}
+
+abort() {
+  ui_print "$@";
+  cleanup;
+  exit 1;
+}
+
+cleanup() {
+	cd $(dirname $MYHOME);
+	rm -rf $MYHOME;
+}
+
+ui_print "*************************************";
+ui_print "*            Splash Maker           *";
+ui_print "*                 by                *";
+ui_print "*              _Reduce              *";
+ui_print "*************************************";
+cleanup;
+mkdir $MYHOME;
+cd $MYHOME;
+unzip -o "$ZIPFILE";
+if [ $? != 0 -o ! "$(ls splash.img)" ]; then
+	abort "[!]Unzip failed. Aborting...";
+fi;
+ui_print "[-]backup splash screen to $BAK";
+dd if=$SPLASH of=$BAK;
+if [ $? -eq 0 ]; then
+	ui_print "[+]backup done";
+fi;
+
+ui_print "[-]installing new splash screen";
+dd if=splash.img of=$SPLASH;
+if [ $? -eq 0 ]; then
+	ui_print "[+]instalation done";
+fi
+
+cleanup;
